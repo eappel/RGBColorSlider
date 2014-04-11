@@ -21,6 +21,8 @@
 		C0E651E418F8900500E0AA15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E651C618F8900500E0AA15 /* UIKit.framework */; };
 		C0E651EC18F8900500E0AA15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0E651EA18F8900500E0AA15 /* InfoPlist.strings */; };
 		C0E651EE18F8900500E0AA15 /* RGBColorSliderExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E651ED18F8900500E0AA15 /* RGBColorSliderExampleTests.m */; };
+		C0E651FE18F8920200E0AA15 /* RGBColorSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E651FB18F8920200E0AA15 /* RGBColorSlider.m */; };
+		C0E651FF18F8920200E0AA15 /* RGBColorSliderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E651FD18F8920200E0AA15 /* RGBColorSliderDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		C0E651E918F8900500E0AA15 /* RGBColorSliderExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RGBColorSliderExampleTests-Info.plist"; sourceTree = "<group>"; };
 		C0E651EB18F8900500E0AA15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C0E651ED18F8900500E0AA15 /* RGBColorSliderExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RGBColorSliderExampleTests.m; sourceTree = "<group>"; };
+		C0E651FA18F8920200E0AA15 /* RGBColorSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBColorSlider.h; sourceTree = "<group>"; };
+		C0E651FB18F8920200E0AA15 /* RGBColorSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBColorSlider.m; sourceTree = "<group>"; };
+		C0E651FC18F8920200E0AA15 /* RGBColorSliderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBColorSliderDelegate.h; sourceTree = "<group>"; };
+		C0E651FD18F8920200E0AA15 /* RGBColorSliderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBColorSliderDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 				C0E651D418F8900500E0AA15 /* Main.storyboard */,
 				C0E651D718F8900500E0AA15 /* RGBEXViewController.h */,
 				C0E651D818F8900500E0AA15 /* RGBEXViewController.m */,
+				C0E651F918F8920200E0AA15 /* Classes */,
 				C0E651DA18F8900500E0AA15 /* Images.xcassets */,
 				C0E651C918F8900500E0AA15 /* Supporting Files */,
 			);
@@ -150,6 +157,18 @@
 				C0E651EA18F8900500E0AA15 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0E651F918F8920200E0AA15 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C0E651FA18F8920200E0AA15 /* RGBColorSlider.h */,
+				C0E651FB18F8920200E0AA15 /* RGBColorSlider.m */,
+				C0E651FC18F8920200E0AA15 /* RGBColorSliderDelegate.h */,
+				C0E651FD18F8920200E0AA15 /* RGBColorSliderDelegate.m */,
+			);
+			name = Classes;
+			path = ../../../Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E651FE18F8920200E0AA15 /* RGBColorSlider.m in Sources */,
 				C0E651CF18F8900500E0AA15 /* main.m in Sources */,
 				C0E651D918F8900500E0AA15 /* RGBEXViewController.m in Sources */,
+				C0E651FF18F8920200E0AA15 /* RGBColorSliderDelegate.m in Sources */,
 				C0E651D318F8900500E0AA15 /* RGBEXAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

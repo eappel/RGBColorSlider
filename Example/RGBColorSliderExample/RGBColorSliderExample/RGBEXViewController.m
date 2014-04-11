@@ -7,6 +7,8 @@
 //
 
 #import "RGBEXViewController.h"
+#import "RGBColorSlider.h"
+#import "RGBColorSliderDelegate.h"
 
 @interface RGBEXViewController ()
 
