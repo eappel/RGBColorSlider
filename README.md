@@ -37,12 +37,30 @@ Additionally, your view controller must adopt the `RGBColorSliderDataOutput` pro
 
 ## Example
 
-To create a new RGBColorSlider, use must use the custom init method:
-
+To create a new RGBColorSlider, first you need to initialize a `RGBColorSliderDelegate` object  
 ```objective-c
-    [[RGBColorSlider alloc] initWithFrame:<#(CGRect)#> sliderColor:<#(RGBColorType)#> trackHeight:<#(float)#> delegate:<#(id<RGBColorSliderDelegate>)#>];
+RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
 ```
 
+Then use the custom init method to create a slider  
+```objective-c
+- (id)initWithFrame:(CGRect)frame sliderColor:(RGBColorType)color trackHeight:(float)height delegate:(id<RGBColorSliderDelegate>)delegate
+```
+
+Creating red, green, and blue sliders would look something like:  
+```objective-c
+RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
+delegate.delegate = self;  
+
+RGBColorSlider *redSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20, 140, 280, 44) sliderColor:RGBColorTypeRed trackHeight:6 delegate:delegate];
+RGBColorSlider *greenSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20, 188, 280, 44) sliderColor:RGBColorTypeGreen trackHeight:6 delegate:delegate];
+RGBColorSlider *blueSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20, 232, 280, 44) sliderColor:RGBColorTypeBlue trackHeight:6 delegate:delegate];  
+    
+[self.view addSubview:redSlider];
+[self.view addSubview:greenSlider];
+[self.view addSubview:blueSlider];
+```
+Note that you need to set the RGBColorSliderDelegate's delegate to `self` to enable the delegate to report the updated colors when a slider value is changed.
 
 ## License
 
