@@ -1,7 +1,9 @@
 # RGBColorSlider
 
 [![Version](http://cocoapod-badges.herokuapp.com/v/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)  
+
+RGBColorSlider provides a dead simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.
 
 
 ## Requirements
