@@ -60,7 +60,22 @@ RGBColorSlider *blueSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20
 [self.view addSubview:greenSlider];
 [self.view addSubview:blueSlider];
 ```
-Note that you need to set the RGBColorSliderDelegate's delegate to `self` to enable the delegate to report the updated colors when a slider value is changed.
+Note that you need to set the RGBColorSliderDelegate's delegate to `self` to enable reporting of the updated color when a slider value is changed.  
+
+In the example project, `-updateColor:` changes the background color of a UIView to display the current color based on each slider value.
+
+##FAQ
+
+- Do I need to use all three sliders?
+
+- What about an Alpha slider?
+
+- `-updateColor` works but sometimes I need to get the current color without waiting for the user to interact with a slider.  How can I fetch the current color at a specific part of my project?
+
+
+## Design
+-How it works (design)
+-Design choices
 
 ## License
 
