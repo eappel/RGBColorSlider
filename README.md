@@ -3,22 +3,43 @@
 [![Version](http://cocoapod-badges.herokuapp.com/v/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)
 
-## Usage
-
-To run the example project; clone the repo, and run `pod install` from the Example directory.
 
 ## Requirements
+RGBColorSlider uses ARC and is targeted for iOS 7.0
 
 ## Installation
 
-RGBColorSlider is available through [CocoaPods](http://cocoapods.org), to install
-it simply add the following line to your Podfile:
+### CocoaPods
 
-    pod "RGBColorSlider"
+RGBColorSlider is available through [CocoaPods](http://cocoapods.org). To install it  
 
-## Author
+1. Add `pod 'RGBColorSlider'` to your `Podfile`
+2. In your terminal run `$ pod install` and open your workspace `$ open yourApp.xcworkspace`
 
-Eric Appel, ema77@cornell.edu 
+### Manual
+
+Copy the `Classes` folder into your project.
+
+## Usage
+
+To use RGBColorSlider in your project, you need to include the following:
+
+    #import "RGBColorSlider.h"
+    #import "RGBColorSliderDelegate.h"
+
+Additionally, your view controller must adopt the `RGBColorSliderDataOutput` protocol which has one required method:
+
+```objective-c
+@interface YourViewController () <RGBColorSliderDataOutlet>
+- (void)updateColor:(UIColor *)color
+{
+	// ... Do something ...
+}
+```
+
+## Example
+
+
 
 ## License
 
