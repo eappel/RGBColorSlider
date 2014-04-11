@@ -74,8 +74,9 @@ In the example project, `-updateColor:` changes the background color of a UIView
 
 
 ## Design
--How it works (design)
--Design choices
+
+How it works, design choices.  
+RGBColorType definition
 
 ## License
 
