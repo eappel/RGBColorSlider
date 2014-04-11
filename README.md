@@ -18,7 +18,7 @@ it simply add the following line to your Podfile:
 
 ## Author
 
-Eric Appel, ema77@cornell.edu
+Eric Appel, ema77@cornell.edu 
 
 ## License
 
