@@ -23,7 +23,7 @@ To use RGBColorSlider in your project, you need to include the following:
     #import "RGBColorSlider.h"
     #import "RGBColorSliderDelegate.h"
 
-Additionally, your view controller must adopt the `RGBColorSliderDataOutput` protocol which has one required method.
+Additionally, your view controller must adopt the `RGBColorSliderDataOutput` protocol, which has one required method.
 
 ```objective-c
 @interface YourViewController () <RGBColorSliderDataOutlet>
@@ -37,9 +37,14 @@ Additionally, your view controller must adopt the `RGBColorSliderDataOutput` pro
 
 ## Example
 
+To create a new RGBColorSlider, use must use the custom init method:
+
+```objective-c
+    [[RGBColorSlider alloc] initWithFrame:<#(CGRect)#> sliderColor:<#(RGBColorType)#> trackHeight:<#(float)#> delegate:<#(id<RGBColorSliderDelegate>)#>];
+```
 
 
 ## License
 
-RGBColorSlider is available under the MIT license. See the LICENSE file for more info.
+RGBColorSlider is available under the MIT license. See the [LICENSE](https://github.com/eappel/RGBColorSlider/blob/master/LICENSE) file for more info.
 
