@@ -31,6 +31,8 @@ Additionally, your view controller must adopt the `RGBColorSliderDataOutput` pro
 
 ```objective-c
 @interface YourViewController () <RGBColorSliderDataOutlet>
+```
+```objective-c
 - (void)updateColor:(UIColor *)color
 {
 	// ... Do something ...
