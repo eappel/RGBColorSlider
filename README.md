@@ -67,11 +67,11 @@ In the example project, `-updateColor:` changes the background color of a UIView
 - Do I need to use all three sliders?  
 No.  The code will work if you use any combination of sliders.
 
-- What about an Alpha slider?  
+- What about an alpha slider?  
 To add a slider to control the alpha value of the color, create a slider just like you would for red, green, or blue, but pass RGBColorTypeAlpha to the color parameter.
 
 - `-updateColor` works but sometimes I need to get the current color without waiting for the user to interact with a slider.  How can I fetch the current color at a specific part of my project?  
-Use the following methods to get current color values:
+Use the following methods declared in `RGBColorSliderDelegate.h` to get current color values:
 ```objective-c
 - (UIColor *)getCurrentColor;
 - (float)getRedColorComponent;
