@@ -5,7 +5,6 @@
 
 RGBColorSlider provides a dead simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.
 
-
 ## Requirements
 RGBColorSlider uses ARC and is targeted for iOS 7.0
 
