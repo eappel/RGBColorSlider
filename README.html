@@ -201,6 +201,13 @@ RGBColorSlider *blueSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20
 2. The slider's <code>sliderColor</code> and <code>trackHeight</code> are configured.<br />
 3. <code>-connectToDelegate:</code> is called, which connects the slider and delegate.</p>
 <h3 id="rgbcolorsliderdelegateh-m"><a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h">RGBColorSliderDelegate.h</a>   <a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m">/ .m</a></h3>
+<p>RGBColorSliderDelegate manages the colors of RGBColorSlider objects.  When <code>-connectToDelegate:</code> in <a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m">RGBColorSlider.m</a> is called, a degate method (<code>-connectSlider:toColor:</code>)  assigns the slider to the correct property.  Depending on the slider's color, one of the following properties will be set:</p>
+<pre><code class="objective-c">@property (nonatomic, strong) RGBColorSlider *redSlider;
+@property (nonatomic, strong) RGBColorSlider *greenSlider;
+@property (nonatomic, strong) RGBColorSlider *blueSlider;
+@property (nonatomic, strong) RGBColorSlider *alphaSlider;
+</code></pre>
+
 <h4 id="diagram">Diagram</h4>
 <p><img alt="diagram" src="file:///Users/ericpel28/Documents/github/RGBColorSlider/README_assets/RGBColorSliderDiagram.png" /></p>
 <h2 id="faq">FAQ</h2>

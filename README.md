@@ -103,6 +103,15 @@ When a slider is created, a few things happen.
 
 ### [RGBColorSliderDelegate.h](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h)   [/ .m](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m)
 
+RGBColorSliderDelegate manages the colors of RGBColorSlider objects.  When `-connectToDelegate:` in [RGBColorSlider.m](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m) is called, a degate method (`-connectSlider:toColor:`)  assigns the slider to the correct property.  Depending on the slider's color, one of the following properties will be set:
+```objective-c
+@property (nonatomic, strong) RGBColorSlider *redSlider;
+@property (nonatomic, strong) RGBColorSlider *greenSlider;
+@property (nonatomic, strong) RGBColorSlider *blueSlider;
+@property (nonatomic, strong) RGBColorSlider *alphaSlider;
+```
+
+
 #### Diagram
 
 ![diagram](README_assets/RGBColorSliderDiagram.png)
