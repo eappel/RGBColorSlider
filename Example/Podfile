@@ -1,7 +1,3 @@
-pod "RGBColorSlider", :path => "../"
+platform :ios
 
-target "Demo" do
-end
-
-target "DemoTests" do
-end
+pod "RGBColorSlider", :path => "../RGBColorSlider.podspec"

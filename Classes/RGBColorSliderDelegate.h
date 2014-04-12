@@ -14,7 +14,7 @@
 @interface RGBColorSliderDelegate : NSObject <RGBColorSliderDelegate>
 
 /// The delegate's delegate.  Used to report the aggregate color from all the sliders when they change.
-@property (nonatomic, weak) id<RGBColorSliderDataOutlet> delegate;
+@property (nonatomic) id<RGBColorSliderDataOutlet> delegate;
 
 /// Mutable array holding the colorvalues.        Functions as a dictionary using objectAtIndex:(RGBColorType). @see RGBColorSlider.h for RGBColorType definition
 @property (nonatomic, strong) NSMutableArray *colorComponentsArray;
