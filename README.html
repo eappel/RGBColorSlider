@@ -124,9 +124,9 @@ body{font-size:16px;}
 <p>RGBColorSlider provides a dead simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.</p>
 <p><img alt="demo" src="file:///Users/ericpel28/Documents/github/RGBColorSlider/README_assets/RGBColorSliderDemo.gif" /></p>
 <h2 id="requirements">Requirements</h2>
-<p>RGBColorSlider uses ARC and is targeted for iOS 7.0</p>
+<p>RGBColorSlider uses ARC and is targeted for iOS 7.0.</p>
 <h2 id="installation">Installation</h2>
-<p>RGBColorSlider is available through <a href="http://cocoapods.org">CocoaPods</a>. To install it  </p>
+<p>RGBColorSlider is available through <a href="http://cocoapods.org">CocoaPods</a>. To install:  </p>
 <ol>
 <li>Add <code>pod 'RGBColorSlider'</code> to your <code>Podfile</code></li>
 <li>In your terminal run <code>$ pod install</code> and open your workspace <code>$ open yourApp.xcworkspace</code></li>
@@ -171,20 +171,6 @@ RGBColorSlider *blueSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20
 
 <p>Note that you need to set the RGBColorSliderDelegate's delegate to <code>self</code> to enable reporting of the updated color when a slider value is changed.  </p>
 <p>In the example project, <code>-updateColor:</code> changes the background color of a UIView to display the current color based on each slider value.</p>
-<h2 id="faq">FAQ</h2>
-<h5 id="do-i-need-to-use-all-three-sliders">Do I need to use all three sliders?</h5>
-<p>No.  The code will work if you use any combination of sliders.</p>
-<h5 id="what-about-an-alpha-slider">What about an alpha slider?</h5>
-<p>To add a an alpha slider, create an RGBColorSlider just like you would for red, green, or blue, but pass <code>RGBColorTypeAlpha</code> to the color parameter.</p>
-<h5 id="the-updatecolor-method-works-great-but-how-can-i-get-the-current-color-without-waiting-for-the-user-to-interact-with-a-slider">The <code>-updateColor</code> method works great but how can I get the current color without waiting for the user to interact with a slider?</h5>
-<p>To fetch the current color at a specific point in time, use the following methods declared in <code>RGBColorSliderDelegate.h</code> to get current color values:</p>
-<pre><code class="objective-c">- (UIColor *)getCurrentColor;
-- (float)getRedColorComponent;
-- (float)getGreenColorComponent;
-- (float)getBlueColorComponent;
-- (float)getAlphaComponent;
-</code></pre>
-
 <h2 id="design">Design</h2>
 <h3 id="rgbcolorsliderh-m"><a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSlider.h">RGBColorSlider.h</a>  <a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSlider.m">/ .m</a></h3>
 <p>RGBColorSlider is a subclass of <a href="https://developer.apple.com/library/ios/documentation/uikit/reference/UISlider_Class/Reference/Reference.html">UISlider</a>.  </p>
@@ -209,9 +195,27 @@ RGBColorSlider *blueSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20
 @end
 </code></pre>
 
-<p>Using a RGBColorSlider requires the use of the custom init method (<code>-initWithFrame:sliderColor:trackHeight:delegate</code>) for a couple reasons.</p>
+<p>Using a RGBColorSlider requires the use of the custom init method (<code>-initWithFrame:sliderColor:trackHeight:delegate:</code>) to specify which type of slider you want to create (I.e. red, green, or blue), how thick the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders, so you can pass it when initializing the sliders.  Be sure to pass the same delegate to each slider you are using to enable the sliders to "talk" to eachother.</p>
+<p>When a slider is created, a few things happen.<br />
+1. An action is specified for <code>UIControlEventValueChanged</code>.  This creates a connection between the slider and method so that whenever the slider's value changes, <code>-valueDidChange:</code> gets called.<br />
+2. The slider's <code>sliderColor</code> and <code>trackHeight</code> are configured.<br />
+3. <code>-connectToDelegate:</code> is called, which connects the slider and delegate.</p>
 <h3 id="rgbcolorsliderdelegateh-m"><a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h">RGBColorSliderDelegate.h</a>   <a href="https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m">/ .m</a></h3>
-<h3 id="diagram">Diagram</h3>
+<h4 id="diagram">Diagram</h4>
 <p><img alt="diagram" src="file:///Users/ericpel28/Documents/github/RGBColorSlider/README_assets/RGBColorSliderDiagram.png" /></p>
+<h2 id="faq">FAQ</h2>
+<h5 id="do-i-need-to-use-all-three-sliders">Do I need to use all three sliders?</h5>
+<p>No.  The code will work if you use any combination of sliders.</p>
+<h5 id="what-about-an-alpha-slider">What about an alpha slider?</h5>
+<p>To add a an alpha slider, create an RGBColorSlider just like you would for red, green, or blue, but pass <code>RGBColorTypeAlpha</code> to the color parameter.</p>
+<h5 id="the-updatecolor-method-works-great-but-how-can-i-get-the-current-color-without-waiting-for-the-user-to-interact-with-a-slider">The <code>-updateColor</code> method works great but how can I get the current color without waiting for the user to interact with a slider?</h5>
+<p>To fetch the current color at a specific point in time, use the following methods declared in <code>RGBColorSliderDelegate.h</code> to get current color values:</p>
+<pre><code class="objective-c">- (UIColor *)getCurrentColor;
+- (float)getRedColorComponent;
+- (float)getGreenColorComponent;
+- (float)getBlueColorComponent;
+- (float)getAlphaComponent;
+</code></pre>
+
 <h2 id="license">License</h2>
 <p>RGBColorSlider is available under the MIT license. See the <a href="https://github.com/eappel/RGBColorSlider/blob/master/LICENSE">LICENSE</a> file for more info.</p></body></html>
