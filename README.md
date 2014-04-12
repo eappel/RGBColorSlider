@@ -1,8 +1,5 @@
 # RGBColorSlider
 
-[![Version](http://cocoapod-badges.herokuapp.com/v/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/RGBColorSlider/badge.png)](http://cocoadocs.org/docsets/RGBColorSlider)  
-
 RGBColorSlider provides a dead simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.
 
 ## Requirements
@@ -67,17 +64,23 @@ In the example project, `-updateColor:` changes the background color of a UIView
 
 ##FAQ
 
-- Do I need to use all three sliders?
+- Do I need to use all three sliders?  
+No.  The code will work if you use any combination of sliders.
 
-- What about an Alpha slider?
+- What about an Alpha slider?  
+To add a slider to control the alpha value of the color, create a slider just like you would for red, green, or blue, but pass RGBColorTypeAlpha to the color parameter.
 
-- `-updateColor` works but sometimes I need to get the current color without waiting for the user to interact with a slider.  How can I fetch the current color at a specific part of my project?
-
+- `-updateColor` works but sometimes I need to get the current color without waiting for the user to interact with a slider.  How can I fetch the current color at a specific part of my project?  
+Use the following methods to get current color values:
+```objective-c
+- (UIColor *)getCurrentColor;
+- (float)getRedColorComponent;
+- (float)getGreenColorComponent;
+- (float)getBlueColorComponent;
+- (float)getAlphaComponent;
+```
 
 ## Design
-
-How it works, design choices.  
-RGBColorType definition
 
 ## License
 
