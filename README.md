@@ -18,12 +18,12 @@ RGBColorSlider uses ARC and is targeted for iOS 7.0.
 
 ## Usage
 
-To use RGBColorSlider in your project, you need to include the following:
+To use RGBColorSlider in your project, you need to include the following
 
     #import "RGBColorSlider.h"
     #import "RGBColorSliderDelegate.h"
 
-To recieve color change updates, your view controller must adopt the `RGBColorSliderDataOutput` protocol, which has one required method:
+To recieve color change updates, your view controller must adopt the `RGBColorSliderDataOutput` protocol, which has one required method
 
 ```objective-c
 @interface YourViewController () <RGBColorSliderDataOutlet>
@@ -37,17 +37,17 @@ To recieve color change updates, your view controller must adopt the `RGBColorSl
 
 ## Example
 
-To create a new RGBColorSlider, you first need to initialize a `RGBColorSliderDelegate` object:
+To create a new RGBColorSlider, you first need to initialize a `RGBColorSliderDelegate` object
 ```objective-c
 RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
 ```
 
-Then use the following method to create a slider:
+Then use the following method to create a slider
 ```objective-c
 - (id)initWithFrame:(CGRect)frame sliderColor:(RGBColorType)color trackHeight:(float)height delegate:(id<RGBColorSliderDelegate>)delegate
 ```
 
-Creating red, green, and blue sliders would look something like:  
+Creating red, green, and blue sliders would look something like  
 ```objective-c
 RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
 delegate.delegate = self;  
@@ -103,7 +103,7 @@ When a slider is created, a few things happen:
 
 ### [RGBColorSliderDelegate.h](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h)   [/ .m](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m)
 
-RGBColorSliderDelegate manages the colors of RGBColorSlider objects.  When `-connectToDelegate:` in [RGBColorSlider.m](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m) is called, a degate method (`-connectSlider:toColor:`)  assigns the slider object to the correct property in the delegate object.  Depending on the slider's color, one of the following properties will be set:
+RGBColorSliderDelegate manages the colors of RGBColorSlider objects.  When `-connectToDelegate:` in [RGBColorSlider.m](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m) is called, a degate method (`-connectSlider:toColor:`)  assigns the slider object to the correct property in the delegate object.  Depending on the slider's color, one of the following properties will be set
 ```objective-c
 @property (nonatomic, strong) RGBColorSlider *redSlider;
 @property (nonatomic, strong) RGBColorSlider *greenSlider;
@@ -128,7 +128,7 @@ is called from `-slider:valueDidChangeTo:forSliderColor:` to update the aggregat
 - (void)updateColor:(UIColor *)color;
 @end
 ```
-Recall that to have your view controller conform to the RGBColorSliderDataOutlet protocol, simply include the following in your implementation file:
+Recall that to have your view controller conform to the RGBColorSliderDataOutlet protocol, simply include the following in your implementation file
 
 ```objective-c
 @interface YourViewController () <RGBColorSliderDataOutlet>
@@ -155,7 +155,7 @@ No.  The code will work if you use any combination of sliders.
 To add a an alpha slider, create an RGBColorSlider just like you would a red, green, or blue slider, but pass `RGBColorTypeAlpha` to the color parameter.
 
 ##### The `-updateColor` method works great but how can I get the current color without waiting for the user to interact with a slider?  
-To fetch the current color at a specific point in time, use the following methods declared in `RGBColorSliderDelegate.h` to get current color values:
+To fetch the current color at a specific point in time, use the following methods declared in `RGBColorSliderDelegate.h`
 ```objective-c
 - (UIColor *)getCurrentColor;
 - (float)getRedColorComponent;
