@@ -121,7 +121,7 @@ body{font-size:16px;}
   h2, h3 { page-break-after: avoid; }
 }
 </style><title>README</title></head><body><h1 id="rgbcolorslider">RGBColorSlider</h1>
-<p>RGBColorSlider provides a dead simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.</p>
+<p>RGBColorSlider provides a simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.</p>
 <p><img alt="demo" src="file:///Users/ericpel28/Documents/github/RGBColorSlider/README_assets/RGBColorSliderDemo.gif" /></p>
 <h2 id="requirements">Requirements</h2>
 <p>RGBColorSlider uses ARC and is targeted for iOS 7.0.</p>
@@ -208,7 +208,23 @@ RGBColorSlider *blueSlider = [[RGBColorSlider alloc] initWithFrame:CGRectMake(20
 @property (nonatomic, strong) RGBColorSlider *alphaSlider;
 </code></pre>
 
-<h4 id="diagram">Diagram</h4>
+<p>When a slider's value is changed, the delegate method, <code>-slider:valueDidChangeTo:forSliderColor:</code>, calls <code>-setMinSliderTrackImage:forColor:</code> and <code>-setMaxSliderTrackImage:forColor:</code> to update the bar colors for each slider.</p>
+<blockquote>
+<p><code>-setMinSliderTrackImage:forColor:</code> and <code>-setMaxSliderTrackImage:forColor:</code> work by redrawring a stretchable, 20px wide gradient into an image context that then gets exported and set as the track images for a slider.  To calculate the gradient colors, the methods calculate the left (minimum) color as if the current slider were set to zero and the other sliders stayed the same, and the right (maximum) color as if the current slider were set to 1.0 and the other sliders stayed the same.</p>
+</blockquote>
+<p>Lastly, </p>
+<pre><code class="objective-c">[self.delegate updateColor:updatedColor];
+</code></pre>
+
+<p>is called from <code>-slider:valueDidChangeTo:forSliderColor:</code> to update the aggregate color in the RGBColorSliderDelegate's delegate, which adopts the RGBColorSliderDataOutlet delegate protocol.  [RGBColorSliderDelegate's header file] declares protocol with just the single method:</p>
+<pre><code class="objective-c">@protocol RGBColorSliderDataOutlet &lt;NSObject&gt;
+@required
+- (void)updateColor:(UIColor *)color;
+@end
+</code></pre>
+
+<p>It is essential that the view controller in which you use your RGBColorSliders adopts the RGBColorSliderDataOutlet to be notified when a color change occurs. </p>
+<h3 id="diagram">Diagram</h3>
 <p><img alt="diagram" src="file:///Users/ericpel28/Documents/github/RGBColorSlider/README_assets/RGBColorSliderDiagram.png" /></p>
 <h2 id="faq">FAQ</h2>
 <h5 id="do-i-need-to-use-all-three-sliders">Do I need to use all three sliders?</h5>

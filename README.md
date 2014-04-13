@@ -1,6 +1,6 @@
 # RGBColorSlider
 
-RGBColorSlider provides a dead simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.
+RGBColorSlider provides a simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.
 
 ![demo](README_assets/RGBColorSliderDemo.gif)
 
@@ -111,8 +111,24 @@ RGBColorSliderDelegate manages the colors of RGBColorSlider objects.  When `-con
 @property (nonatomic, strong) RGBColorSlider *alphaSlider;
 ```
 
+When a slider's value is changed, the delegate method, `-slider:valueDidChangeTo:forSliderColor:`, calls `-setMinSliderTrackImage:forColor:` and `-setMaxSliderTrackImage:forColor:` to update the bar colors for each slider.
 
-#### Diagram
+>`-setMinSliderTrackImage:forColor:` and `-setMaxSliderTrackImage:forColor:` work by redrawring a stretchable, 20px wide gradient into an image context that then gets exported and set as the track images for a slider.  To calculate the gradient colors, the methods calculate the left (minimum) color as if the current slider were set to zero and the other sliders stayed the same, and the right (maximum) color as if the current slider were set to 1.0 and the other sliders stayed the same.
+
+Lastly, 
+```objective-c
+[self.delegate updateColor:updatedColor];
+```
+is called from `-slider:valueDidChangeTo:forSliderColor:` to update the aggregate color in the RGBColorSliderDelegate's delegate, which adopts the RGBColorSliderDataOutlet delegate protocol.  [RGBColorSliderDelegate's header file] declares protocol with just the single method:
+```objective-c
+@protocol RGBColorSliderDataOutlet <NSObject>
+@required
+- (void)updateColor:(UIColor *)color;
+@end
+```
+It is essential that the view controller in which you use your RGBColorSliders adopts the RGBColorSliderDataOutlet to be notified when a color change occurs. 
+
+### Diagram
 
 ![diagram](README_assets/RGBColorSliderDiagram.png)
 
