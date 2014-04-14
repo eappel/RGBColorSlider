@@ -84,7 +84,7 @@ RGBColorSlider is a subclass of [UISlider](https://developer.apple.com/library/i
 - (void)connectToDelegate:(id<RGBColorSliderDelegate>)delegate
 - (void)valueDidChange:(RGBColorSlider *)sender
 ```
-The [header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSlider.h) also defines the RGBColorSliderDelegate protocol that will be adopted by the [delegate object](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h)
+The [header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSlider.h) also defines the RGBColorSliderDelegate protocol to be adopted by the [delegate object](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h)
 ```objective-c
 @protocol RGBColorSliderDelegate <NSObject>
 @required
@@ -93,7 +93,7 @@ The [header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/R
 - (void)connectSlider:(RGBColorSlider *)sender toColor:(RGBColorType)color;
 @end
 ```
-Using a RGBColorSlider requires the use of the custom init method (`-initWithFrame:sliderColor:trackHeight:delegate:`) to specify which type of slider you want to create (i.e. red, green, or blue), how tall the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders, so you can specify it when initializing the sliders.  Be sure to pass the same delegate to each slider you are using to enable them to "talk" to eachother.
+Using a RGBColorSlider requires the use of the custom init method (`-initWithFrame:sliderColor:trackHeight:delegate:`) to specify which type of slider you want to create (i.e. red, green, or blue), how tall the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders, so you can specify it when initializing the sliders.  Be sure to pass the same delegate to each slider you are using to enable them to react to each other.
 
 When a slider is created, a few things happen:
 
@@ -163,6 +163,7 @@ To fetch the current color at a specific point in time, use the following method
 - (float)getBlueColorComponent;
 - (float)getAlphaComponent;
 ```
+*Note that color components are values between 0 and 1. To convert to the RGB scale, multiply by 255.*
 
 ## License
 
