@@ -119,7 +119,7 @@ Lastly,
 ```objective-c
 [self.delegate updateColor:updatedColor];
 ```
-is called from `-slider:valueDidChangeTo:forSliderColor:` to update the aggregate color in the RGBColorSliderDelegate's delegate, which is the view controller where the RGBColorSlider and RGBColorSliderDelegate objects are created. It is essential that the view controller adopts the RGBColorSliderDataOutlet protocol in order to be notified when the color changes.  
+is called from `-slider:valueDidChangeTo:forSliderColor:` to update the aggregate color in the RGBColorSliderDelegate's delegate, which is the view controller where the RGBColorSlider and RGBColorSliderDelegate objects are created. It is essential that the view controller conforms to the RGBColorSliderDataOutlet protocol in order to be notified when the color changes.  
 
 [RGBColorSliderDelegate's header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h) declares the protocol with just a single method:
 ```objective-c
