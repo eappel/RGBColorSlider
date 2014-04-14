@@ -163,7 +163,7 @@ To fetch the current color at a specific point in time, use the following method
 - (float)getBlueColorComponent;
 - (float)getAlphaComponent;
 ```
-*Note that color components are values between 0 and 1. To convert to the RGB scale, multiply by 255.*
+*Note that color components are stored as values between 0 and 1. To convert to RGB scale, multiply by 255.*
 
 ## License
 
