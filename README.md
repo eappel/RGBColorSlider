@@ -47,7 +47,7 @@ Then use the following method to create a slider
 - (id)initWithFrame:(CGRect)frame sliderColor:(RGBColorType)color trackHeight:(float)height delegate:(id<RGBColorSliderDelegate>)delegate
 ```
 
-Creating red, green, and blue sliders would look something like  
+Creating red, green, and blue sliders would look something like:  
 ```objective-c
 RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
 delegate.delegate = self;  
@@ -87,19 +87,17 @@ RGBColorSlider is a subclass of [UISlider](https://developer.apple.com/library/i
 The [header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSlider.h) also defines the RGBColorSliderDelegate protocol to be adopted by the [delegate object](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h)
 ```objective-c
 @protocol RGBColorSliderDelegate <NSObject>
-@required
 - (void)slider:(RGBColorSlider *)sender valueDidChangeTo:(float)value forSliderColor:(RGBColorType)color;
-@required
 - (void)connectSlider:(RGBColorSlider *)sender toColor:(RGBColorType)color;
 @end
 ```
-Using a RGBColorSlider requires the use of the custom init method (`-initWithFrame:sliderColor:trackHeight:delegate:`) to specify which type of slider you want to create (i.e. red, green, or blue), how tall the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders, so you can specify it when initializing the sliders.  Be sure to pass the same delegate to each slider you are using to enable them to react to each other.
+Using a RGBColorSlider requires the use of the custom init method (`-initWithFrame:sliderColor:trackHeight:delegate:`) to specify which type of slider you want to create (i.e. red, green, or blue), how tall the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders.  Be sure to pass the same delegate to each slider you are using to enable them to react to each other.
 
 When a slider is created, a few things happen:
 
 1. An action is specified for `UIControlEventValueChanged`.  This creates a connection between the slider and method so that whenever the slider's value changes, `-valueDidChange:` gets called.  
 2. The slider's `sliderColor` and `trackHeight` are configured.  
-3. `-connectToDelegate:` is called, which connects the slider and delegate.
+3. `-connectToDelegate:` is called, which connects the slider to its delegate.
 
 ### [RGBColorSliderDelegate.h](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h)   [/ .m](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.m)
 
@@ -113,18 +111,17 @@ RGBColorSliderDelegate manages the colors of RGBColorSlider objects.  When `-con
 
 When a slider's value is changed, `-slider:valueDidChangeTo:forSliderColor:` calls `-setMinSliderTrackImage:forColor:` and `-setMaxSliderTrackImage:forColor:` to update the bar colors for each slider.
 
->`-setMinSliderTrackImage:forColor:` and `-setMaxSliderTrackImage:forColor:` work by redrawring a stretchable, 20px wide gradient into an image context that then gets exported and set as the track images for a slider.  To calculate the gradient colors, the methods compute the left (minimum) color as if the current slider were set to zero and the other sliders stayed the same, and the right (maximum) color as if the current slider were set to 1.0 and the other sliders stayed the same.
+>`-setMinSliderTrackImage:forColor:` and `-setMaxSliderTrackImage:forColor:` work by redrawring a stretchable, 20px wide gradient into an image context that then gets set as the track image for a slider.  To calculate the gradient colors, the methods compute the left (minimum) color as if the current slider were set to zero and the other sliders stayed the same, and the right (maximum) color as if the current slider were set to 1.0 and the other sliders stayed the same.
 
 Lastly, 
 ```objective-c
 [self.delegate updateColor:updatedColor];
 ```
-is called from `-slider:valueDidChangeTo:forSliderColor:` to update the aggregate color in the RGBColorSliderDelegate's delegate, which is the view controller where the RGBColorSlider and RGBColorSliderDelegate objects are created. It is essential that the view controller conforms to the RGBColorSliderDataOutlet protocol in order to be notified when the color changes.  
+is called from `-slider:valueDidChangeTo:forSliderColor:` to update the aggregate color in the RGBColorSliderDelegate's delegate, which should be the view controller where the RGBColorSlider and RGBColorSliderDelegate objects are created. It is essential that the view controller conforms to the RGBColorSliderDataOutlet protocol in order to be notified when the color changes.  
 
 [RGBColorSliderDelegate's header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/RGBColorSliderDelegate.h) declares the protocol with just a single method:
 ```objective-c
 @protocol RGBColorSliderDataOutlet <NSObject>
-@required
 - (void)updateColor:(UIColor *)color;
 @end
 ```
