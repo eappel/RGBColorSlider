@@ -1,6 +1,6 @@
 # RGBColorSlider
 
-RGBColorSlider provides a simple way to add RGB sliders that dynamically respond to each other and change their appearances to give users an intuitive way to pick colors.
+RGBColorSlider provides a simple way to add RGB sliders that respond to each other and change their appearances to give users an intuitive way to pick colors.
 
 ![demo](README_assets/RGBColorSliderDemo.gif)
 
