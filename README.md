@@ -1,6 +1,6 @@
 # RGBColorSlider
 
-RGBColorSlider provides a simple way to add RGB sliders that respond to each other and change their appearances to give users an intuitive way to pick colors.
+RGBColorSlider provides a simple way to add RGB sliders to an iOS application. RGBColorSliders dynamically react to eachother and alter their appearences to give users an intuitive way to pick colors.
 
 ![demo](README_assets/RGBColorSliderDemo.gif)
 
@@ -18,7 +18,7 @@ RGBColorSlider uses ARC and is targeted for iOS 7.0.
 
 ## Usage
 
-To use RGBColorSlider in your project, you need to include the following
+To use RGBColorSlider in your project, you first need to import the following headers:
 
     #import "RGBColorSlider.h"
     #import "RGBColorSliderDelegate.h"
@@ -42,12 +42,12 @@ To create a new RGBColorSlider, you first need to initialize a `RGBColorSliderDe
 RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
 ```
 
-Then use the following method to create a slider
+Then use the following initializer to create a slider
 ```objective-c
 - (id)initWithFrame:(CGRect)frame sliderColor:(RGBColorType)color trackHeight:(float)height delegate:(id<RGBColorSliderDelegate>)delegate
 ```
 
-Creating red, green, and blue sliders would look something like:  
+Creating red, green, and blue sliders would look something like this:  
 ```objective-c
 RGBColorSliderDelegate *delegate = [[RGBColorSliderDelegate alloc] init];
 delegate.delegate = self;  
@@ -91,7 +91,7 @@ The [header file](https://github.com/eappel/RGBColorSlider/blob/master/Classes/R
 - (void)connectSlider:(RGBColorSlider *)sender toColor:(RGBColorType)color;
 @end
 ```
-Using a RGBColorSlider requires the use of the custom init method (`-initWithFrame:sliderColor:trackHeight:delegate:`) to specify which type of slider you want to create (i.e. red, green, or blue), how tall the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders.  Be sure to pass the same delegate to each slider you are using to enable them to react to each other.
+Using a RGBColorSlider requires the use of the custom initializer (`-initWithFrame:sliderColor:trackHeight:delegate:`) to specify which type of slider you want to create (i.e. red, green, or blue), how tall the slider bar will be, and the delegate of the slider.  Because of this, the delegate object needs to be created before the sliders.  Be sure to pass the same delegate to each slider you are using to enable them to react to each other.
 
 When a slider is created, a few things happen:
 
@@ -146,7 +146,7 @@ The diagram below illustrates the relationship between the classes used in this 
 ## FAQ
 
 ##### Do I need to use all three sliders?  
-No.  The code will work if you use any combination of sliders.
+No.  Everything will work if you use any number and combination of sliders (even if you use just one).
 
 ##### What about an alpha slider?  
 To add a an alpha slider, create an RGBColorSlider just like you would a red, green, or blue slider, but pass `RGBColorTypeAlpha` to the color parameter.
@@ -160,7 +160,7 @@ To fetch the current color at a specific point in time, use the following method
 - (float)getBlueColorComponent;
 - (float)getAlphaComponent;
 ```
-*Note that color components are stored as values between 0 and 1. To convert to RGB scale, multiply by 255.*
+*Note that color components return values between 0 and 1. To convert to RGB scale, multiply by 255.*
 
 ## License
 
