@@ -1,6 +1,6 @@
 # RGBColorSlider
 
-RGBColorSlider provides a simple way to add RGB sliders to an iOS application. RGBColorSliders dynamically react to eachother and alter their appearences to give users an intuitive way to pick colors.
+RGBColorSlider provides a simple way to add RGB sliders to an iOS application. RGBColorSliders dynamically react to each other and alter their appearences to give users an intuitive way to pick colors.
 
 ![demo](README_assets/RGBColorSliderDemo.gif)
 
